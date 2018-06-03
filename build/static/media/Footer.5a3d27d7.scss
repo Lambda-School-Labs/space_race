@@ -1,0 +1,114 @@
+.Footer {
+    animation-delay: 2s;
+    padding-top: 0;
+    padding-left: 2%;
+    background-color: #333;
+    .footer-nav {
+      flex-direction: column;
+    }
+    @media (min-width: 375px) {
+      padding-top: .3rem;
+    }
+    @media (min-width: 412px) {
+      padding-top: .8rem;
+    }
+    @media (min-width: 992px) {
+      padding-top: 1rem;
+      padding-left: 5%;
+    }
+    .footer-badge {
+      padding-top: .3rem;
+      padding-bottom: .5rem;
+      margin-left: 0;
+      width: 3rem;
+      @media (min-width: 412px) {
+        padding-top: .5rem;
+        padding-bottom: 0;
+        margin-left: -.2rem;
+      }
+      @media (min-width: 736px) {
+        margin-left: -.5rem;
+        width: 3.5rem;
+      }
+    }
+    h6 {
+      margin-bottom: 1rem;
+      color: lightgray;
+      @media (min-width: 992px) {
+        font-size: 1.6rem;
+      }
+    }
+    a {
+      margin-top: -1rem;
+      margin-bottom: .5rem;
+      color: lightgray;
+      @media (min-width: 412px) {
+        margin-top: -2rem;
+        margin-bottom: 1.5rem;
+      }
+      &.top-link {
+        text-align: right;
+        font-size: .8rem;
+        @media (min-width: 992px) {
+          font-size: 1rem;
+        }
+      }
+      &:hover {
+        color: darkgray;
+      }
+    }
+    p {
+      font-size: .8rem;
+      line-height: 1rem;
+      color: darkgray;
+      @media (min-width: 992px) {
+        font-size: .9rem;
+        line-height: 1.1rem;
+      }
+      &.race-responsibly {
+        margin-left: 1rem;
+        color: lightgray;
+        font-size: 1rem;
+        margin-top: .8rem;
+        margin-bottom: 2rem;
+        @media (min-width: 992px) {
+          font-size: 1.3rem;
+        }
+      }
+      &.about-text {
+        margin-top: -.5rem;
+      }
+      &.copyright {
+        margin-top: -.75rem;
+      }
+    }
+    .wrapper {
+      margin-left: 1rem;
+      @media (min-width: 412px) {
+        margin-top: -1rem;
+      }
+      @media (min-width: 736px) {
+        margin-top: 0;
+      }
+      .left {
+        float:left;
+        .name {
+          font-size: .9rem;
+          line-height: .2rem;
+          @media (min-width: 992px) {
+            font-size: 1.1rem;
+          }
+        }
+      }
+      .right {
+        float: left;
+        .domain {
+          font-size: .9rem;
+          line-height: .2rem;
+          @media (min-width: 992px) {
+            font-size: 1.1rem;
+          }
+        }
+      }
+    }
+  }

@@ -1,0 +1,22 @@
+.Header {
+    min-height: 80px;
+    max-height: 80px;
+    .navbar {
+      max-width: 1500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .SpaceRace {
+      margin-top: 1rem;
+      width: 100%;
+      .name {
+        margin-bottom: 4px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #3b5998; // Facebook color (from word cloud)
+      }
+      .title {
+        color: #2eadf7; 
+      }
+    }
+  }
