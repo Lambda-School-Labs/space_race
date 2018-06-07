@@ -7,6 +7,7 @@ import ScoreBoard from '../ScoreBoardPage/index';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Jumbotron, Button } from 'reactstrap';
 import { Progress } from 'react-sweet-progress';
+import SideBar from '../Navigation/SideBar';
 import 'react-sweet-progress/lib/style.css';
 import './AdminDeliveryPage.css';
 
@@ -67,6 +68,9 @@ class QuestionCard extends Component {
 
         return (
             <div>
+                                    <div  className="sidebar"> 
+                        <SideBar />
+                    </div>
                 <Jumbotron className="jumbotron">
                 {!this.props.gotRace ? null : 
                 <div>
@@ -114,8 +118,8 @@ class QuestionCard extends Component {
                 }
             }}
         />
+
             </div>
-            
             // Potential setup for questions/answers? Need opinions
             // This is based from React-II Instagram Clone during Week 4
             /*<div className="question-panel">
