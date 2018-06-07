@@ -5,7 +5,7 @@ import { CreateRaceCard } from '../CardViews/CreateRaceCard';
 import { gettingRace, nextQuestion } from '../../Actions/adminDeliveryPage';
 import ScoreBoard from '../ScoreBoardPage/index';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { Jumbotron } from 'reactstrap';
+import { Jumbotron, Button } from 'reactstrap';
 import { Progress } from 'react-sweet-progress';
 import 'react-sweet-progress/lib/style.css';
 import './AdminDeliveryPage.css';
@@ -60,7 +60,7 @@ class QuestionCard extends Component {
 
     render() {
         const { question, isLoading, error, isHidden } = this.state;
-
+        
         if (error) {
             return <p>{error.message}</p>;
         }
@@ -85,17 +85,19 @@ class QuestionCard extends Component {
                 <p className="lead">A Place Holder For The Question</p>
                 <hr className="my-2" />
                 <p>A Place Holder For The Answers:
+                </p>
+                <Button color="info" size="sm" active className="float-left" onClick={this.toggleHidden}> Show Answer</Button>
+                <p>
                     <li>A</li>
                     <li>B</li>
                     <li>C</li>
                     <li>D</li>
                 </p>
-                <button color="primary" className="float-left" onClick={this.toggleHidden}> Show Answer</button>
-                <button color="primary" className="float-right" onClick={this.nextQuestion}> Next Question</button>
+                <Button color="info" size="sm" active className="float-right" onClick={this.nextQuestion}> Next Question</Button>
                 {this.state.lastQuestion ? <div>You're all done!</div> : null}
             </Jumbotron>
            { /* ------- Websocket showing how many have answered question ------- */ }
-            <Progress 
+            <Progress
             percent={100}
             theme={{
                 success: {
@@ -113,6 +115,7 @@ class QuestionCard extends Component {
             }}
         />
             </div>
+            
             // Potential setup for questions/answers? Need opinions
             // This is based from React-II Instagram Clone during Week 4
             /*<div className="question-panel">
