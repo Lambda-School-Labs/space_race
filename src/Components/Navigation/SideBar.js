@@ -10,16 +10,24 @@ const SideBar = (props) => {
     return (
         <Nav vertical className="Menu">
             <NavItem>
+                <ul className="ul">
                 <NavLink href="/createrace">CREATE </NavLink>
+                </ul>
             </NavItem>
             <NavItem>
+                <ul className="ul">
                 <NavLink href="/showrace">SHOW</NavLink>
+                </ul>
             </NavItem>
             <NavItem>
+                <ul className="ul">
                 <NavLink href="/scoreboard">SCOREBOARD</NavLink>
+                </ul>
             </NavItem>
             <NavItem>
+                <ul className="ul">
                 <NavLink href="/settings">SETTINGS</NavLink>
+                </ul>
             </NavItem>
             
         </Nav>
