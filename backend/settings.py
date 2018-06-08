@@ -16,9 +16,11 @@ from decouple import config
 import dj_database_url
 import django_heroku
 
+"""
 STRIPE_TEST_PUBLIC_KEY = os.environ.get("STRIPE_TEST_PUBLIC_KEY", "pk_test_TNLV3fu5CQAkF4bWXPJBou1V")
 STRIPE_TEST_SECRET_KEY = os.environ.get("STRIPE_TEST_SECRET_KEY", "sk_test_HP05OJENWcUnfccM9cXT1yLS")
 STRIPE_LIVE_MODE = False
+"""
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -57,12 +59,13 @@ INSTALLED_APPS = [
     'rest_auth.registration',
     'rest_framework.authtoken',
     'corsheaders',
+    'stripe',
     'djstripe',
     # Our apps
     'api',
     'teams',
     'accounts',
-    'payment',
+    'paypay',
 ]
 
 AUTH_USER_MODEL = 'accounts.CustomUser' 
@@ -213,7 +216,8 @@ CHANNEL_LAYERS = {
     },
 }
 
-STRIPE_SECRET_KEY= os.getenv('STRIPE_SECRET_KEY')
+STRIPE_TEST_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY', "pk_test_TNLV3fu5CQAkF4bWXPJBou1V")
+STRIPE_TEST_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY', "sk_test_HP05OJENWcUnfccM9cXT1yLS")
 
 
 DJSTRIPE_PLANS = {
