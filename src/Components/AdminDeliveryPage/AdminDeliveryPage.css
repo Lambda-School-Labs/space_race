@@ -87,6 +87,7 @@ body {
   }
 
   .sidebar {
+    border: rgb(110, 28, 148)!important;
     position: absolute;
     left: 0px;
     width: 10%;
