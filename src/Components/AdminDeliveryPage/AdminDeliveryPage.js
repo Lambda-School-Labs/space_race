@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Progress } from 'reactstrap';
 import { Questions } from '../ScoreBoardPage/questionboard';
 import { CreateRaceCard } from '../CardViews/CreateRaceCard';
-import { gettingRace, nextQuestion } from '../../Actions/adminDeliveryPage'
-import ScoreBoard from '../ScoreBoardPage/index'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { gettingRace, nextQuestion } from '../../Actions/adminDeliveryPage';
+import ScoreBoard from '../ScoreBoardPage/index';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Jumbotron, Button } from 'reactstrap';
+import { Progress } from 'react-sweet-progress';
+import SideBar from '../Navigation/SideBar';
+import 'react-sweet-progress/lib/style.css';
 import './AdminDeliveryPage.css';
 
 /* Progress bar will get data from this.props.race.questions[this.props.index] DIVIDED BY this.props.race.number_of_participants
@@ -18,28 +21,23 @@ class QuestionCard extends Component {
         this.state = {
             lastQuestion: false,
             error: null,
-           // isHidden: true
+            isHidden: true
         }
     }
-    /*toggleHidden () {
+    toggleHidden () {
         this.setState({
             isHidden: !this.state.isHidden
         })
     }
-    render () { 
+    /* render () { 
         return (
-            <div>
-                <button onClick={this.toggleHidden.bind(this)} >
-                Show answer
-                </button>
-                {!this.state.isHidden && <Child />}
-            </div>
+            
         )
-    } */
+    } */ 
 
-    // componentDidMount() {
-    //     // this.props.gettingRace(this.props.match.params.slug)
-    // }
+     /*componentDidMount() {
+          this.props.gettingRace(this.props.match.params.slug)
+     } */
 
      revealAnswerToggle = () => {
         const active = !this.state.show
@@ -62,14 +60,18 @@ class QuestionCard extends Component {
     }
 
     render() {
-        const { question, isLoading, error } = this.state;
-
+        const { question, isLoading, error, isHidden } = this.state;
+        
         if (error) {
             return <p>{error.message}</p>;
         }
 
         return (
             <div>
+                                    <div  className="sidebar"> 
+                        <SideBar />
+                    </div>
+                <Jumbotron className="jumbotron">
                 {!this.props.gotRace ? null : 
                 <div>
                     {<div key={this.props.race.questions[this.props.index].id}>
@@ -83,8 +85,40 @@ class QuestionCard extends Component {
 
                     }
                 </div>}
-                <button onClick={this.nextQuestion}> Next Question</button>
+                <h1 className="display-3">Question</h1>
+                <p className="lead">A Place Holder For The Question</p>
+                <hr className="my-2" />
+                <p>A Place Holder For The Answers:
+                </p>
+                <Button color="info" size="sm" active className="float-left" onClick={this.toggleHidden}> Show Answer</Button>
+                <p>
+                    <li>A</li>
+                    <li>B</li>
+                    <li>C</li>
+                    <li>D</li>
+                </p>
+                <Button color="info" size="sm" active className="float-right" onClick={this.nextQuestion}> Next Question</Button>
                 {this.state.lastQuestion ? <div>You're all done!</div> : null}
+            </Jumbotron>
+           { /* ------- Websocket showing how many have answered question ------- */ }
+            <Progress
+            percent={100}
+            theme={{
+                success: {
+                    symbol: '🚀',
+                    color: 'rgb(223, 105, 180)'
+                },
+                active: {
+                    symbol: '😀',
+                    color: '#fbc630'
+                },
+                default: {
+                    symbol: '😱',
+                    color: '#fbc630'
+                }
+            }}
+        />
+
             </div>
             // Potential setup for questions/answers? Need opinions
             // This is based from React-II Instagram Clone during Week 4
@@ -135,20 +169,8 @@ class QuestionCard extends Component {
     /* Next Question Button Options End Here */
 }
 
-/* ------- Websocket showing how many have answered question ------- */
-const progressBar = (props) => {
-    return (
-    <div>
-        <div className="text-center">Progress</div>
-        <Progress multi>
-            <Progress animated value={2 * 5}>Team 1 </Progress>
-            <Progress animated color="success" value="25">Team 2 </Progress>
-            <Progress animated color="info" value={50}>Team 3 </Progress>
-            <Progress animated color="warning" value={75}>Team 4 </Progress>
-        </Progress>
-    </div>
-    );
-}
+
+
 
 const mapStateToProps = state => {
     return {

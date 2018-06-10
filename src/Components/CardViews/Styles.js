@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import './fonts/stylesheet.css'
+import '../fonts/stylesheet.css'
 const btn = (light, dark) => css`
 
 

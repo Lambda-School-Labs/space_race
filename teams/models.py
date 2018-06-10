@@ -3,12 +3,6 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.conf import settings
 
-# class Team(models.Model):
-#     title = models.CharField(max_length=20)
-
-#     def __str__(self):
-#         return self.title
-
 User = settings.AUTH_USER_MODEL
 
 class Quiz(models.Model):
@@ -16,6 +10,7 @@ class Quiz(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     randomize_team = models.BooleanField(default=False)
     slug = models.SlugField(unique=True, blank=True)
+    index = models.IntegerField(default=0)
     number_of_participants = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now=True)
     last_modified = models.DateTimeField(auto_now=True)

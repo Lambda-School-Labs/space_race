@@ -45,6 +45,10 @@ class QuizConsumer(WebsocketConsumer):
         team.save()
       question.number_of_responses = question.number_of_responses + 1
       question.save()
+    elif 'index' in text_data_json:
+      quiz = Quiz.objects.get(slug=text_data_json['slug'])
+      quiz.index = quiz.index + 1
+      quiz.save()
 
     quiz = QuizSerializer(Quiz.objects.get(slug=text_data_json['slug']))
 

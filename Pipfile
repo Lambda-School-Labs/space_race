@@ -18,6 +18,8 @@ djangorestframework-jwt = "*"
 django-allauth = "*"
 channels = "*"
 channels-redis = "*"
+stripe = "*"
+dj-stripe = "*"
 
 [dev-packages]
 

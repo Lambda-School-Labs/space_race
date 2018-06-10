@@ -13,7 +13,7 @@ class AdminDelivery extends Component {
             <div>
                 Admin Delivery Page
                 <div className="main">
-                    <QuestionCard />
+                    <QuestionCard  slug={this.props.match.params.slug}/>
                 </div>
             </div>
         );

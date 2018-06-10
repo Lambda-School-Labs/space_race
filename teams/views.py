@@ -3,7 +3,7 @@ from rest_framework import generics
 from .models import Quiz, Student, Team, Question, Answer
 from .serializers import QuizSerializer, StudentSerializer, QuizModelSerializer, TeamModelSerializer, QuestionModelSerializer, AnswerSerializer
 
-class ListQuiz(generics.ListAPIView):
+class ListQuiz(generics.ListCreateAPIView):
     serializer_class = QuizSerializer
 
     def get_queryset(self):
@@ -14,9 +14,17 @@ class ListQuiz(generics.ListAPIView):
             return Quiz.objects.all()
         return Quiz.objects.filter(user=user)
 
-class DetailQuiz(generics.RetrieveAPIView):
+class DetailQuiz(generics.RetrieveUpdateDestroyAPIView):
     queryset = Quiz.objects.all()
     serializer_class = QuizSerializer
+
+    def get_queryset(self):
+        user = self.request.user
+        if user.is_anonymous:
+            return Quiz.objects.none()
+        elif user.is_superuser:
+            return Quiz.objects.all()
+        return Quiz.objects.filter(user=user)
 
 class DetailQuizSlug(generics.RetrieveAPIView):
     queryset = Quiz.objects.all()

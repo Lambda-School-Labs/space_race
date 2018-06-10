@@ -6,7 +6,7 @@ import {
     CHECK_IF_AUTHENTICATED,
   } from '../Actions';
   
-  export default (auth = {}, action) => {
+  export default (auth = {}, action, state) => {
     switch (action.type) {
       case LOGGINGIN:
       return {...state, loggingIn: true}

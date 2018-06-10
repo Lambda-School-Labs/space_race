@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStudent } from './Actions/studentPage';
-import RequireAuth from './Components/Authentication/RequireAuth;'
+import RequireAuth from './Components/Authentication/RequireAuth';
 import ScoreBoard from "./Components/ScoreBoardPage/index";
 import LandingPage from "./Components/LandingPage/LandingPage";
 
 import StudentJoinRacePage from "./Components/StudentJoinRacePage/StudentJoinRacePage";
 import ShowRaceCard from "./Components/CardViews/ShowRaceCard";
-import CreateRaceCard from "./Components/CardViews/CreateRaceCard";
+import CreateRaceCard from "./Components/CreateRacePage/index";
 
 import Settings from "./Components/SettingsPage/SettingsPage";
 import SignUp from "./Components/UserAccounts/SignUp";
@@ -22,7 +22,7 @@ class App extends Component {
   render() {
     return (                    
       <div>                     
-        <Route path="/" exact component={LandingPage} />
+        {/* <Route path="/" exact component={LandingPage} /> */}
         <Route path="/signin" component={SignIn} />
         <Route path="/signup" component={SignUp} />
         <Route path="/admindelivery/:slug" component={AdminDelivery} />
@@ -36,7 +36,7 @@ class App extends Component {
         <Route path="/student" component={StudentJoinRace} />
 
 
-    when we have the authentication and login hooked up to the back the below routes can be uncommented and the above routes can be deleted
+   {/* ---- when we have the authentication and login hooked up to the back the below routes can be uncommented and the above routes can be deleted ---- */}
       {/*}  <Route path="/admindelivery/:slug" component={RequireAuth(AdminDelivery)} />
         {/*<Route path="/adminrace" component={AdminRace} /> 
         <Route path="/api" component={RequireAuth(App)} />

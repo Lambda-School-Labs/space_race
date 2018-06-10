@@ -16,24 +16,27 @@ Including another URLconf
 
 from django.contrib import admin
 
-from django.conf.urls import url
 from django.views.generic import TemplateView
-
 from django.urls import include, path
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/', include('api.urls')),
     path('.*', TemplateView.as_view(template_name='index.html')),
-    path('db/', include('teams.urls'))
+    path('', include('paypay.urls')),
+    path('db/', include('teams.urls')),
+
+   # path('payment/', include('payment.urls')),
+   # path('payment/', include('djstripe.urls')),
 ]
 
 
 
+"""    path('.*', SubscribeView.as_view(template_name='subscribe.html')),
+    path('.*', SuccessView.as_view(template_name='stripe_/thank_you.html')),"""
 
-
-
-"""
+""" Why isn't acctounts in the urlpatterns above? Is it because it's being called from the log-in part of the app?
 from django.contrib import admin
 from django.urls import include, path
 from django.conf.urls import include, url

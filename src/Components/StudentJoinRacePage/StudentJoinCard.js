@@ -7,32 +7,17 @@ import { Button, Form, FormGroup, Input, InputGroup, InputGroupButtonDropdown, D
 // still need to add functionality
 // also will need to map over the availble teams for the dropdown menu
 
+
+//TODO: Style and add random-team function
+
 class StudentJoinCard extends Component {
     constructor(props){
         super(props);
         this.state = {
             name: '',
             team: null,
-        //     teams: this.props.teams,
-        //     raceName: this.props.raceName,
-        //     randomTeams:this.props.randomTeams,
-        //     dropdownOpen: false,
-
         };
-        // this.handleClick = this.handleClick.bind(this);
-        // this.select =this.select.bind(this);
-        // this.onChange=this.onChange.bind(this);
-        // this.toggleDropDown = this.toggleDropDown.bind(this);
     }
-    componentDidMount() {
-        // this.props.gettingRace(this.props.match.params.slug)
-    }
-
-    // toggleDropDown = () => {
-    //     this.setState({
-    //       dropdownOpen: !this.state.dropdownOpen
-    //     });
-    //   }
 
     onChange = (e) => {
         this.setState({ [e.target.name]: e.target.value});
@@ -48,11 +33,9 @@ class StudentJoinCard extends Component {
         let history = this.props.history
         console.log(this.state)
         this.props.createStudent(this.state, slug, history)
-        //this.props.studentJoinRace(this.state);
     }
 
     render() {
-        // const randomTeams =this.state.randomTeams;
         return(
             this.props.gotRace ?
             <div>
@@ -76,6 +59,7 @@ class StudentJoinCard extends Component {
                                  name="team"
                                  onChange={this.select}
                                  id ="selectTeam">
+                                 <option></option>
                                  {this.props.race.teams.map(team => {
                                     return <option key={team.id} value={team.id} name="team" >{team.name}</option> 
                                  })}

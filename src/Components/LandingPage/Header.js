@@ -29,16 +29,16 @@ class Header extends Component {
       /* Signed In */
       const _l = [
         <NavItem key={1}>
-          <NavLink tag={Link} to="/"  >Home</NavLink>
+          <NavLink /*tag={Link}*/ to="/"  >Home</NavLink>
         </NavItem>,
         <NavItem key={2}>
-          <NavLink tag={Link} to="/Dashboard" >Dashboard</NavLink>
+          <NavLink /*tag={Link}*/ to="/Dashboard" >Dashboard</NavLink>
         </NavItem>
       ];
       if(this.props.registered){
         _l.push(
           <NavItem key={3}>
-            <NavLink tag={Link} to="/Billing"  >Billing</NavLink>
+            <NavLink /*tag={Link}*/ to="/Billing"  >Billing</NavLink>
           </NavItem>);
       } else {
         _l.push(
@@ -51,10 +51,10 @@ class Header extends Component {
     return [
       /* Signed out.. */
       <NavItem key={1}>
-        <NavLink tag={Link} to="/" className="" >Home</NavLink>
+        <NavLink /*tag={Link}*/ to="/" className="" >Home</NavLink>
       </NavItem>,
       <NavItem key={2}>
-        <InstaLogin />
+        {/*<InstaLogin /> */} 
       </NavItem>
     ];
   }

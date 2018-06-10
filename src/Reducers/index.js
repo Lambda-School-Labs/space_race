@@ -6,6 +6,8 @@ import showRacesReducer from './showRaces';
 import LogInReducer from './LogIn';
 import adminDeliveryReducer from './adminDeliveryReducer';
 import StudentReducer from './studentReducer';
+import CreateRaceReducer from './CreateRaceReducer';
+
 import AuthReducer from  './AuthenticationReducer';
 import BillingReducer from './BillingReducer';
 const RootReducers = combineReducers({
@@ -18,7 +20,8 @@ const RootReducers = combineReducers({
     Races: showRacesReducer,
     LogIn: LogInReducer,
     AdminDelivery: adminDeliveryReducer,
-    Student: StudentReducer
+    Student: StudentReducer,
+    CreateRace: CreateRaceReducer,
 })
 
 export default RootReducers;

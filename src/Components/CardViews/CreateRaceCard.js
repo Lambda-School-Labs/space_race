@@ -1,193 +1,108 @@
-import React from 'react'
-import { render } from 'react-dom'
-import Styles from './Styles'
-import { Form, Field, FormSpy } from 'react-final-form'
-import arrayMutators from 'final-form-arrays'
-import { FieldArray } from 'react-final-form-arrays'
-import { OnChange } from 'react-final-form-listeners'
-import Icon from './icons/Icon';
-import { ICONS } from './icons/Iconstants';
-import { connect } from 'react-redux';
-// import { ColorMenu } from './colormenu/ColorMenu';
-import { createRace }  from '../../Actions';
-//
-/**
- * 
- * for local dev testing*********************************************************/
-handleSubmit(event) {
-  event.preventDefault();
-  const data = new FormData(event.target);
+// import { Form, Text } from 'react-form';
+// import React, { Component } from 'react';
+// import 'bootstrap/dist/css/bootstrap.css';
+// import TeamColorPicker from './TeamColorPicker';
+// import ToggleRandom from './ToggleRandom';
+// import { connect } from 'react-redux';
+// import { shuffleArray } from '../../Actions/';
+// import { createRace } from '../../Actions/createRace'
+// import  InlineEditTrigger  from './InlineEditTrigger';
 
-}
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
+// class CreateRaceCard extends Component {
 
-const onSubmit = async values => {
-  await sleep(300)
-  window.alert(JSON.stringify(values, 0, 2))
-}
-/**
- * 
- *  ***********verifies all input fields when user submits formdata, alert window verifies the data******
- */
-
- /**
-  * set up conditional field rendering, if admin chooses random, disable adding teams feature, if adding teams, disable random etc. 
-  */
- const Error = ({ name }) => (
-  <Field
-    name={name}
-    subscribe={{ touched: true, error: true }}
-    render={({ meta: { touched, error } }) =>
-      touched && error ? <span>{error}</span> : null
-    }
-  />
-);
-
-
-
-
-const required = value => (value ? undefined : 'Required')
-const WhenFieldChanges = ({ field, becomes, set, to }) => (
-    <Field name={set} subscription={{}}>
-      {(
-        // No subscription. We only use Field to get to the change function
-        { input: { onChange } }
-      ) => (
-        <OnChange name={field}>
-          {value => {
-            if (value === becomes) {
-              OnChange(to)
-            }
-          }}
-        </OnChange>
-      )}
-    </Field>
-  )
-  
-const CreateRaceCard = () => (
-  
-  
-  <Styles>
-    <h1>🏁 Create Race 🏁</h1>
-    <Form
-      onSubmit={onSubmit}
-      mutators={{
-        ...arrayMutators
-      }}
-      onSubmit={onSubmit}
-      render={({
-        handleSubmit,
-        mutators: { push, pop }, // injected from final-form-arrays above
-        pristine,
-        reset,
-        submitting,
-        values
-      }) => {
-        return (
-          <form onSubmit={handleSubmit}>
-          <WhenFieldChanges
-            field="name"
-            becomes={!undefined}
-            set="randomize"
-            to={false}
-            />
-          <WhenFieldChanges
-            field="randomize"
-            becomes={true}
-            set="teams"
-            to={undefined}
-            />
-            <div>
-              <label><h4><strong>Race Name</strong></h4></label>
-              <Field name="name" component="input" disabled={ values.teams || values.randomize } validate={required} />
-            </div>
-            <div>
-              <label>
-                <Field
-                  name="randomize"
-                  component="input"
-                  disabled={ !values.name || values.teams }
-                  type="checkbox"
-                  value="true"
-                  initialValues={false}
-                />{" "}
-                Random Teams
-              </label>
-              </div>
-            <div className="buttons">
-            <div className="buttons">
-            <button type="submit" disabled={submitting || pristine && !values.name}>
-              Submit Race 
-            </button>
-            <button
-              type="button"
-              onClick={reset}
-              disabled={submitting || pristine}>
-              Reset
-            </button>
-          </div>
-              <button
-                type="button"
-                disabled={ pristine || values.randomize || (!values.name || values.randomize) || (values.name && pristine) }
-                onClick={() => push('teams', undefined)}>
-                Add Team
-              </button>
-              <button type="button" disabled={ !values.race || values.randomize } onClick={() => pop('teams')}>
-                Remove Team
-              </button>
-            </div>
-            <FieldArray name="teams">
-              {({ fields }) =>
-                fields.map((team, index) => (
-                  <div key={team}>
-                    <label><h3>Team {index + 1}</h3></label>
-                    <Field
-                      name={`${team}.team`}
-                      component="input"
-                      placeholder="Team" 
-                    />
-                     <div>
-                     <label>Team Color</label>
-                     <Field name={`${team}.color`} component="select">
-                       <option />
-                       <option value="#ff0000">❤️ Red</option>
-                       <option value="#00ff00">💚 Green</option>
-                       <option value="#0000ff">💙 Blue</option>
-                     </Field>
-                     <Error name="favoriteColor" />
-                   </div>
-                   <div>
-                   <label>Mascot</label>
-                   <Field name={`${team}.mascot`}  component="select" multiple>
-                     <option value="ham">🐷 Ham</option>
-                     <option value="mushrooms">🍄 Mushrooms</option>
-                     <option value="cheese">🧀 Cheese</option>
-                     <option value="chicken">🐓 Chicken</option>
-                     <option value="pineapple">🍍 Pinapple</option>
-                   </Field>
-                   <Error name="mascot" />
-                 </div>
-                    <span
-                      onClick={() => fields.remove(index)}
-                      style={{ cursor: 'pointer' }}>
-                      <Icon icon={ICONS.BIN2} color={"blue"} size={24} />
-                    </span>
-                  </div>
-                ))}
-            </FieldArray>
-            <pre>{JSON.stringify(values, 0, 2)}</pre>
-            </form>
-        )
-      }}
-    /> 
-  </Styles>
-    )
-
-      function mapStateToProps(state) {
-      return {
-        // TeamsArray : state.teamsArray,
-        FormData: state.FormData
-      }
-    }
+//   constructor( props ) {
+//     super( props );
+//     // this.handleSubmit = this.handleSubmit.bind(this);
+//     // this.handleRandom = this.handleRandom.bind(this)
+//   }
+//   handleSubmit(event) {
+//     event.preventDefault();
+//     const data = new FormData(event.target);
+//     //sends the FormData object containing the form inputs to the api endpoint for the db to store.
     
-      export default connect(mapStateToProps, { createRace })(CreateRaceCard);
+//     // Data format for quiz
+//     // {
+//     //   "name": "name of quiz/race goes here",
+//     //   "randomize_team": false
+//     // }
+
+//     // Data format for teams.. can be sent as an array
+//     // [{
+//     //   "name": "Awesome sauce",
+//     //   "color": "yellow",
+//     //   "mascot": "eagle"
+//     // },
+//     // {
+//     //   "name": "Awesome sauce x 2",
+//     //   "color": "blue",
+//     //   "mascot": "eagle"
+//     // }]
+    
+//     this.createRace(data.quiz, data.teams); 
+//   }
+  
+//   render() {   
+//     return (
+//       <div className="card border-dark" style={{backgroundColor: 'rgba(189,245,252,0.2)'}}>
+//       <div className="card-header" style={{height: 55}}>
+//         <div className="col-auto">
+//           <div className="row">
+//             <div className="col-auto">
+//               <h4>Race Info</h4>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//         {/* <Form
+//           onSubmit={this.handleSubmit}>
+//           { formApi => (
+//             <div style={{margin:'5px'}}>
+//               <form onSubmit={formApi.submitForm} id="dynamic-form">
+//                 <label  htmlFor="dynamic-first">Race Name</label>
+//                 <InlineEditTrigger value={this.props.inlineValue}/>
+
+//                 <button
+//                 onClick={() => formApi.addValue('siblings', '')}
+//                 type="button"
+//                 className="mb-4 mr-4 btn btn-success" style={{margin: '10px'}}>Add Team</button>
+//               </form>
+//                 <h5 className="text-left bg-info" style={{margin: 10}}>Teams</h5>
+//                 { formApi.values.siblings && formApi.values.siblings.map(( sibling, i ) => (
+//                   <div style={{margin: '5px'}} key={`sibling${i}`}>
+//                     <label htmlFor={`sibling-name-${i}`}>
+//                       <select field={['siblings', i]} id={`sibling-name-${i}`}><optgroup label="Select Team"><option value="team1">Slytherin</option><option value="team2">Griffyndor</option><option value="team3">Hufflepuff</option><option value="team4">Ravenclaw</option></optgroup></select> </label>
+//                     <label htmlFor={`sibling-name-${i}`}>
+//                       <TeamColorPicker field={['siblings', i]} id={`sibling-name-${i}`} /></label>
+//                       <select><optgroup placeholder= "select mascott" label="Select Mascott"><option value={12} >🐷</option><option value={13}>🍄</option><option value={14}>🧀</option></optgroup><option value={15}>🐓</option><option value={16}>🍍</option><option value={17}>🥑</option><option value={18}>🏁</option></select>
+//                       <button style={{margin: '6px'}}className="mb-4 btn btn-primary"><i className="fa fa-pencil" data-bs-hover-animate="bounce"/></button>
+//                       <button
+//                         style={{margin: '6px'}}
+//                         onClick={() => formApi.removeValue('siblings', i)}
+//                         type="button"
+//                         className="mb-4 btn btn-danger"
+//                       >
+//                           <i className="fa fa-trash-o" />
+//                       </button>
+//                   </div> 
+//                 )
+//               )
+//             }
+//               <div style={{margin: '10px'}} className="form-check"><label className="form-check-label" htmlFor="formCheck-1">Random Teams</label><input className="form-check-input" type="radio" id="formCheck-1" onClick={this.handleRandom} /></div>
+//                 <div className="col-auto"><a className="btn btn-outline-primary" role="button" href="#Questions" style={{width: 225, margin: '10px'}}>On To Questions &nbsp;<i className="fa fa-space-shuttle" /></a></div>
+//               </div>  
+//           )
+//         } 
+//         </Form> */}
+//       </div>
+//     );
+//   }
+// }
+
+// function mapStateToProps(state) {
+//   return {
+//     TeamsArray : state.teamsArray,
+//     FormData: state.FormData
+//   }
+// }
+
+// export default connect(mapStateToProps, { shuffleArray,  createRace})(CreateRaceCard);
