@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-
 import { StripeProvider } from "react-stripe-elements";
-
 import MyStoreCheckout from "./MyStoreCheckout";
 
 
