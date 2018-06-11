@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Nav, NavItem, NavLink } from 'reactstrap';
 
 //Basic Skeleton of SideMenu
-//TODO: \
+//TODO: 
 // add dropdown to races link
 //figure out what schools links to
 

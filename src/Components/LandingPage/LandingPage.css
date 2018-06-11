@@ -60,7 +60,7 @@ body {
 }
 /* Place text in the middle of the image */
 .hero-text {
-  font-family: 'zigzageoregular';
+  /* font-family: 'zigzageoregular'; */
   text-align: center;
   text-shadow: -0.5px -0.5px 0 #eea928, -1px -1px 0 #f3d964, -3px -2px 0 #6b3ee7, -3px -3px 0 #eb1430, 1px 1px 0 #eea928;
   position: absolute;
@@ -73,7 +73,7 @@ body {
 }
 
 .title {
-  font-family: 'zigzageoregular';
+  /* font-family: 'zigzageoregular'; */
   text-align: center;
   text-shadow: -0.5px -0.5px 0 #eea928, -1px -1px 0 #f3d964, -3px -2px 0 #6b3ee7, -3px -3px 0 #eb1430, 1px 1px 0 #eea928;
   position: absolute;

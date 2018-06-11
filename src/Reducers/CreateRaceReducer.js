@@ -1,35 +1,29 @@
-import { SEND_FORMDATA, SEND_FORMDATA_SUCCESS, SEND_FORMDATA_FAILURE }  from '../Actions';
-/**
- * 
- * 
- *
- */
+import { QUIZINFOADDED, QUESTIONADDED, STARTRACE, ERROR} from '../Actions/createRace';
+
+let initialState = {
+    quizAdded: false,
+    quiz: null,
+    questionsAdded: false,
+    questions: null,
+    startRace: false,
+    race: null,
+    error: null
+}
 
 
-
-let FormData = {};
-export default (state = FormData, action) => {
-    switch (action.type) {
-        case SEND_FORMDATA:     
-            if (action.payload.data){ 
-              action.payload.data = {...FormData};
-            }
-            return {...state};
-       
-        case SEND_FORMDATA_FAILURE:
-            if (action.payload === null) {
-                alert('please fill out the appropriate fields');   
-            } else  {
-                    return(Error);
-            }
-            return { ...state };
-       
-        case SEND_FORMDATA_SUCCESS:
-            if (action.payload.data !== null){
-                return {...FormData};
-            }
-            break
+const CreateRaceReducer = (state = initialState, action) => {
+    switch(action.type) {
+        case QUIZINFOADDED:
+            return {...state, quizAdded: true, quiz: action.payload};
+        case QUESTIONADDED:
+            return {...state, questionsAdded: true, questions: action.payload};
+        case STARTRACE:
+            return {...state, startRace: true, race: action.payload};
+        case ERROR: 
+            return {...state, error: action.payload};
         default:
-            return state;
+            return state
     }
 }
+
+export default CreateRaceReducer;

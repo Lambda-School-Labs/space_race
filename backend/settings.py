@@ -35,7 +35,7 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', cast=bool, default=False)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(',')
-
+#ALLOWED_HOSTS = [backend.herokuapp.com, '127.0.0.1:8000']
 
 
 # Application definition

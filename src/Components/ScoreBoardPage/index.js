@@ -5,7 +5,7 @@ import './index.css'
 import { connect } from 'react-redux';
 import { gettingRace, sendingAnswer } from '../../Actions/adminDeliveryPage'
 
-
+// TODO: Style and add ability to highlight answer.
 class ScoreBoard extends Component {
   componentDidMount() {
     this.props.gettingRace(this.props.match.params.slug)
@@ -20,8 +20,8 @@ class ScoreBoard extends Component {
       <div>
         ScoreBoard Page
         <div className="main">
-          <Board />
-          <QuestionBaord index={this.props.index} race={this.props.race} gotRace={this.props.gotRace} slug={this.props.match.params.slug} handleAnswerFunc={this.handleAnswer}/>
+          <Board race={this.props.race} gotRace={this.props.gotRace}/>
+          <QuestionBaord index={this.props.race.index} race={this.props.race} gotRace={this.props.gotRace} slug={this.props.match.params.slug} handleAnswerFunc={this.handleAnswer}/>
         </div>
       </div>
     );
@@ -32,7 +32,6 @@ const mapStateToProps = state => {
   return {
       race: state.AdminDelivery.race,
       gotRace: state.AdminDelivery.gotRace,
-      index: state.AdminDelivery.index
   }
 }
 export default connect(mapStateToProps, { gettingRace, sendingAnswer }) (ScoreBoard);

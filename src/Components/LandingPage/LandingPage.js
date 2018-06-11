@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './LandingPage.css';
 import Header from './Header';
-import Middle from './Middle';
+// import Middle from './Middle';
 import Footer from './Footer';
-// import 'bootstrap/dist/css/bootstrap.css';
+import Carousel from './Carousel';
+import 'bootstrap/dist/css/bootstrap.css';
 class LandingPage extends Component {
 
     render() {
@@ -14,7 +15,7 @@ class LandingPage extends Component {
             <Header />
             <br />
             <br />
-            <Middle/>
+            <Carousel/>
             <br />
             <br />
             <Footer />

@@ -29,11 +29,15 @@ class Footer extends Component {
                     </div> 
                   </NavLink>
                 </NavItem>
-                <NavItem>                                            
+               {/*} <NavItem>                                            
                 
                     <Button style={{height: '44px', marginBottom: '10px', backgroundColor: '#5b7bc2' }}>BUY NOW</Button>
                 
+    </NavItem>*/}
+                <NavItem>
+                
                 </NavItem>
+    
               </Nav>
             </Col>
             <Col sm="4" xs="9">
@@ -49,14 +53,14 @@ class Footer extends Component {
               </Row>
               <Row>
     {/*<-------can add optional slogan here or some kind of hook ------------------->*/}
-                <p className="race-responsibly"><em>Race Responsibly</em></p>
+                <p className="race-responsibly"><em>Enter new info </em></p>
               </Row>
             </Col>
             <Col sm="5" xs="12">
-              <h6>"A FUN GAME FOR STUDENTS AND TEACHERS ALIKE!"</h6>
+              <h6>Optional"</h6>
               <p className="about-text">
     {/*<-------------add a brif description of game here or link or just take this out ----------*/}
-               <h5>"This is a must have for all classrooms.  It is a great educational tool to get students to think and learn while having fun!!" <i>Mrs. T, 5th Grade Teacher</i></h5>
+               <h5>Optional<i>optional</i></h5>
                
             </p>
             </Col>

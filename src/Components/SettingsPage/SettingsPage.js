@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './settings.css'
 import Breadcrumbs from '../Navigation/Breadcrumbs';
-import SideMenu from '../Navigation/SideMenu';
+// import SideMenu from '../Navigation/SideMenu';
+import SideBar from '../Navigation/SideBar';
 import SignOutButton from'../Navigation/SignOutButton';
 import SettingsForm from './SettingsForm';
 
@@ -14,7 +15,7 @@ render() {
     <div className="container-fluid" >
         <div className="row">
             <div className="col-xs">
-                <SideMenu/>
+                <SideBar/>
             </div>
             <div className="col-sm">
                     <SettingsForm/>

@@ -20,6 +20,8 @@ const store = createStore(
   applyMiddleware(thunk, ReduxPromise, logger)
 );
 
+
+
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
