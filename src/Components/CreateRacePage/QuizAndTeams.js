@@ -57,7 +57,6 @@ class QuizAndTeamsForm extends Component {
     this.setState({
       [event.target.name]: event.target.value
     })
-    console.log(this.state)
   }
 
   handleChange = name => event => {
@@ -70,7 +69,6 @@ class QuizAndTeamsForm extends Component {
   };
 
   nextHandler = (event) => {
-    console.log(this.state);
     let quiz = {name: this.state.name, teams: this.state.teams, randomize_team: this.state.randomize_team}
     this.props.QuizInfo(quiz)
     this.props.handleNext();
@@ -97,9 +95,7 @@ class QuizAndTeamsForm extends Component {
     }
   }
   handleDelete = index => {
-    console.log(index)
     this.state.teams.splice(index,1);
-    console.log('teams', this.state.teams)
     let quiz = {name: this.state.name, teams: this.state.teams, randomize_team: this.state.randomize_team};
     this.props.QuizInfo(quiz);
   }
@@ -115,14 +111,15 @@ class QuizAndTeamsForm extends Component {
       <div>
         <Form>
           <FormGroup>
-            {/* <Col> */}
+            <Col>
             <Label>Race Name</Label>
             <Input type="text" name="name" placeholder="Name" value={this.state.name} onChange={this.changeHandler} />
-            {/* </Col> */}
+            </Col>
           </FormGroup>
           <br />
           <Label> Add a Team </Label>
-          <FormGroup row >
+          <FormGroup>
+            <div style={{display: "inline-flex", width: "100%"}}>
             <Col sm={3}>
               <Input  sm="4" type="text" name="teamName" placeholder="Team Name" value={this.state.teamName} onChange={this.changeHandler}/>
             </Col>
@@ -145,31 +142,31 @@ class QuizAndTeamsForm extends Component {
             <Col sm={3}>
               <Input onClick={this.colorToggle} placeholder="Pick a Color" value={this.state.color}/>
               <br/>
-              <Col sm={3} style={this.state.colorToggle ? null: {display: 'none'}}>
+              <div sm={3} style={this.state.colorToggle ? null: {display: 'none'}}>
                 <BlockPicker
                     color={ this.state.color }
                     onChangeComplete={ this.handleChangeComplete }
                 />
-              </Col>
+              </div>
             </Col>
             <br/>
             <Col sm={3}>
             <Button onClick={this.teamHandler} variant="contained" color="primary">Add</Button>
             </Col>
+            </div>
           </FormGroup>
           <FormGroup>
-          <ListGroup>
+          <ListGroup style={{display: "inline-flex"}}>
           {this.props.quizAdded ? this.state.teams.map((team, index) => {
             return <ListGroupItem key={index}>{team.name} &emsp; {team.mascot} &emsp; {team.color}
-              <span style={{float: "right"}} onClick={() => this.handleDelete(index)}><IoAndroidDelete size={23} color ="#792d86" /></span>
-              <span style={{float: "right"}}><IoAndroidCreate size={23} color="#792d86" onClick={this.updateToggle}/> 
+              &emsp;<span style={{float: "right"}} onClick={() => this.handleDelete(index)}><IoAndroidDelete size={23} color ="#792d86" /></span>
+              &emsp;<span style={{float: "right"}}><IoAndroidCreate size={23} color="#792d86" onClick={this.updateToggle}/> 
               <UpdateTeamModal   handleUpdate={this.handleUpdate} updateToggleFunc={this.updateToggle} updateToggle={this.state.updateToggle} team={team} index={index}/></span> 
             </ListGroupItem>
           }) : null}
           </ListGroup>
           </FormGroup>
-          <FormGroup row>
-            <Row>
+          <FormGroup >
               <Col>
                 <Switch
                 checked={this.state.randomize_team}
@@ -178,9 +175,7 @@ class QuizAndTeamsForm extends Component {
                 color="primary"
                 /> {' '} Randomize Teams
               </Col>
-            </Row>
           </FormGroup>
-          <br />
           <FormGroup>
           <Button
             disabled={this.props.activeStep === 0}

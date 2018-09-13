@@ -30,7 +30,6 @@ class UpdateQuestionModal extends Component {
     this.setState({
       [event.target.name]: event.target.value
     })
-    console.log(this.state)
   }
 
   handleChange = name => event => {
@@ -69,16 +68,15 @@ class UpdateQuestionModal extends Component {
         <ModalHeader> Update Question</ModalHeader>
         <ModalBody>
         <FormGroup>
-            <Label>Question</Label>
-            <Row>
             <Col>
+            <Label>Question</Label>
             <Input type="text" name="question" placeholder="Question" defaultValue={this.state.question} onChange={this.changeHandler}/>
             </Col>
-            </Row>
           </FormGroup>
-            <Label> Add an Answer </Label>
-          <FormGroup row>
+          <FormGroup>
+            {/* <div style={{display: "inline-flex", width: "100%"}}> */}
             <Col>
+            <Label> Add an Answer </Label>
             <Input type="text" name="answer" placeholder="Answer" value={this.state.answer} onChange={this.changeHandler}/>
             </Col>
             <Col>
@@ -92,12 +90,14 @@ class UpdateQuestionModal extends Component {
             <Col >
               <Button onClick={this.AnswerHandler} variant="contained" color="primary">Add Answer</Button>
             </Col>
+            {/* </div> */}
           </FormGroup>
+          <Col>
           {this.state.answers.map((answer, index) => {
-            return <div key={index}>{answer.answer} {answer.is_correct ? "✅" : "❌"}  <span onClick={() => this.handleAnswerDelete(index)}><IoAndroidDelete size={23} color ="#792d86" /></span></div>
+            return <div key={index}>{answer.answer} {answer.is_correct ? "    ✅ ": "    ❌"}  &emsp;<span onClick={() => this.handleAnswerDelete(index)}><IoAndroidDelete size={23} color ="#792d86" /></span></div>
           })}
-        <FormGroup row>
-          <Row>
+          </Col>
+        <FormGroup >
           <Col >
           <Switch
           checked={this.state.shuffle_answers}
@@ -106,7 +106,6 @@ class UpdateQuestionModal extends Component {
           color="primary"
           /> {' '} Shuffle Answers
           </Col>
-          </Row>
         </FormGroup>
 
         </ModalBody>

@@ -16,7 +16,7 @@ const styles = theme => ({
   }),
 });
 
-const ScoreBoard = (props) => {
+const Board = (props) => {
   let questionsTotal = props.race.questions.length;
   const { classes } = props;
   return (
@@ -44,7 +44,7 @@ const ScoreBoard = (props) => {
   )
 }
 
-ScoreBoard.propTypes = {
+Board.propTypes = {
   classes: PropTypes.object.isRequired,
 };
-export default withStyles(styles)(ScoreBoard);
+export default withStyles(styles)(Board);

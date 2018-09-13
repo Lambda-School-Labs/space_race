@@ -3,11 +3,12 @@ import Board from './scoreboard';
 import QuestionBaord from './questionboard'
 import './index.css'
 import { connect } from 'react-redux';
-import { gettingRace, sendingAnswer } from '../../Actions/adminDeliveryPage'
+import { gettingRace, sendingAnswer } from '../../Actions/adminDeliveryPage';
+import NavBar from '../Navigation/NavBar';
 
 // TODO: Style and add ability to highlight answer.
 class ScoreBoard extends Component {
-  componentDidMount() {
+  componentWillMount() {
     this.props.gettingRace(this.props.match.params.slug)
   }
 
@@ -17,11 +18,11 @@ class ScoreBoard extends Component {
 
   render() {
     return (
-      <div>
-        ScoreBoard Page
-        <div className="main">
+      <div style={{width: "100%"}}>
+          <NavBar />
+        <div className="main" style={{paddingLeft: 150, paddingRight: 150, marginTop: 0}}>
           <Board race={this.props.race} gotRace={this.props.gotRace}/>
-          <QuestionBaord index={this.props.race.index} race={this.props.race} gotRace={this.props.gotRace} slug={this.props.match.params.slug} handleAnswerFunc={this.handleAnswer}/>
+          <QuestionBaord index={this.props.race.index} race={this.props.race} quiz={this.props.quiz} gotQuiz={this.props.gotQuiz} gotRace={this.props.gotRace} slug={this.props.match.params.slug} handleAnswerFunc={this.handleAnswer}/>
         </div>
       </div>
     );
@@ -31,6 +32,8 @@ class ScoreBoard extends Component {
 const mapStateToProps = state => {
   return {
       race: state.AdminDelivery.race,
+      quiz: state.AdminDelivery.quiz,
+      gotQuiz: state.AdminDelivery.gotQuiz,
       gotRace: state.AdminDelivery.gotRace,
   }
 }

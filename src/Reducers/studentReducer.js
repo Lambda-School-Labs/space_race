@@ -1,5 +1,6 @@
 import { STUDENTCREATED, CREATINGSTUDENT, ERROR } from '../Actions/studentPage';
 
+
 let initialState = {
   studentCreated: false,
   creatingStudent: false,

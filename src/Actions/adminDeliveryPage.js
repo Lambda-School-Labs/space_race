@@ -3,6 +3,7 @@ import { WebSocketBridge } from 'django-channels'
 
 export const GETTINGRACE = 'GETTINGRACE';
 export const GOTRACE = 'GOTRACE';
+export const GOTQUIZ = 'GOTQUIZ'
 
 export const SENDINGANSWER = 'SENDINGANSWER'
 
@@ -11,21 +12,12 @@ export const ERROR = 'ERROR';
 const webSocketBridge = new WebSocketBridge();
 
 // TODO: Change url for deployment
-const url = 'ws://127.0.0.1:8000/ws/quiz';
-
+const url = 'ws://spaceracetrivia.herokuapp.com/ws/quiz';
+// const httpReq = 'http://127.0.0.1:8000'
+const httpReq='spaceracetrivia.herokuapp.com'
 export const gettingRace = (slug) => {
   return dispatch => {
     dispatch({type: GETTINGRACE})
-    // let token = window.localStorage.getItem('Authorization')
-    // axios.get(`${url}/${slug}/`)
-    //   .then(response => {
-    //     dispatch({type: GOTRACE, payload: response.data})
-    //     console.log(response.data)
-    //   })
-    //   .catch(error => {
-    //     dispatch({type: ERROR, payload: error})
-    //     console.error(error)
-    //   })
     webSocketBridge.connect(`${url}/${slug}/`);
     let slugObject = { slug: slug}
     webSocketBridge.socket.addEventListener('open', function() {
@@ -36,6 +28,18 @@ export const gettingRace = (slug) => {
       console.log(action, stream);
       dispatch({type: GOTRACE, payload: action})
     })
+  }
+}
+
+export const getQuiz = slug => {
+  return dispatch => {
+    axios.get(`${httpReq}/db/${slug}/`)
+      .then(response => {
+        dispatch({type: GOTQUIZ, payload: response.data})
+      })
+      .catch(err => {
+        dispatch({type: ERROR, payload: err})
+      })
   }
 }
 

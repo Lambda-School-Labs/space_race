@@ -1,25 +1,25 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+// import React, { Component } from 'react';
+// import { connect } from '../../../../../../AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/react-redux';
 
-export default ComposedComponent => {
-  class RequireAuthentication extends Component {
-    componentWillMount() {
-      if (!this.props.authenticated) {
-        this.props.history.push('/');
-      }
-    }
+// export default ComposedComponent => {
+//   class RequireAuthentication extends Component {
+//     componentWillMount() {
+//       if (!this.props.authenticated) {
+//         this.props.history.push('/');
+//       }
+//     }
 
-    render() {
-      return (this.props.authenticated ? <ComposedComponent /> : null);
-    }
-  }
+//     render() {
+//       return (this.props.authenticated ? <ComposedComponent /> : null);
+//     }
+//   }
 
-  const mapStateToProps = state => {
-    return {
-      authenticated: state.auth.authenticated,
-      registered: state.auth.registered,
-    };
-  };
+//   const mapStateToProps = state => {
+//     return {
+//       authenticated: state.auth.authenticated,
+//       registered: state.auth.registered,
+//     };
+//   };
 
-  return connect(mapStateToProps)(RequireAuthentication);
-};
+//   return connect(mapStateToProps)(RequireAuthentication);
+// };

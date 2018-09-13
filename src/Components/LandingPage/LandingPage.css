@@ -5,6 +5,7 @@
   background-color: rgba(86, 21, 170, 0.842);
   min-height: 80px;
     max-height: 80px;
+    border: solid 1px;
   }
   
   .Header .navbar {
@@ -21,22 +22,40 @@
 
   }
   .Header .SpaceRace .name {
-    margin: 22px;
-    font-size: 2.5rem;
+    margin: -10px;
+    padding-left: 8px;
+    font-size: 2rem;
     font-weight: bold;
     color: #5b7bc2;
   }
   .Header .SpaceRace .title {
-    color: #41b0f0;
-    margin: 10px;
-    font-size: 3.5rem;
+    color: #23c7f0;
+    margin: 20px -10px;
+    font-size: 2.5rem;
   }
+  @media (min-width: 222px) {
+  .rules {
+    border: solid 1px;
+    border-color: #495bf7;
+    text-shadow: -0.5px -1px 0 #117f9b, 
+                 
+                  -1px -1px 0 #eb1430, .5px .5px 0 #727ee7;
+    background-attachment: fixed;
+    position: absolute;
+    margin: auto;
+    display: auto;
   
+    width: 20%;
+    background-color: #7641f09a;
+    color: rgb(204, 188, 188);
+    overflow: auto;
+  }
+}
 body {
   /* background-image: url("../images/maxresdefault.jpg"); */
   background-size: cover;
 
-  background-image: url('./maxresdefault.jpg');
+  background-image: url('./images/maxresdefault.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-color: rgb(1, 1, 7); 
@@ -48,7 +67,7 @@ body {
 @import './Font/font.css';
 .hero-image {
   /* The image used */
-  background-image: url("./cockpit6.png");
+  background-image: url("./images/cockpit6.png");
   /* Set a specific height */
   height: 550px;
   
@@ -60,7 +79,7 @@ body {
 }
 /* Place text in the middle of the image */
 .hero-text {
-  /* font-family: 'zigzageoregular'; */
+  font-family: 'zigzageoregular';
   text-align: center;
   text-shadow: -0.5px -0.5px 0 #eea928, -1px -1px 0 #f3d964, -3px -2px 0 #6b3ee7, -3px -3px 0 #eb1430, 1px 1px 0 #eea928;
   position: absolute;
@@ -73,11 +92,11 @@ body {
 }
 
 .title {
-  /* font-family: 'zigzageoregular'; */
+  font-family: 'zigzageoregular';
   text-align: center;
   text-shadow: -0.5px -0.5px 0 #eea928, -1px -1px 0 #f3d964, -3px -2px 0 #6b3ee7, -3px -3px 0 #eb1430, 1px 1px 0 #eea928;
   position: absolute;
-  margin:  top 3rem;
+  margin:  top 2.5rem;
   
   top: 45%;
   left: 50%;
@@ -86,10 +105,16 @@ body {
   color: #3f52f8;
 }
 .Footer {
+    
+   
+    position: relative;
+    border: solid 1px;
+    border-color: #3f52f8;
     animation-delay: 2s;
-    padding-top: 0;
+    
+    
     padding-left: 2%;
-    font-size: 2rem;
+    font-size: .4rem;
     background-color: rgba(86, 21, 170, 0.842);
   }
   .Footer .footer-nav {
@@ -163,7 +188,7 @@ body {
     color: darkgray;
   }
   .Footer p {
-    font-size: 0.8rem;
+    font-size: 0.5rem;
     line-height: 1rem;
     color: darkgray;
   }
@@ -186,7 +211,7 @@ body {
     }
   }
   .Footer p.about-text {
-    margin-top: -0.5rem;
+    margin-top: 0.5rem;
   }
   .Footer p.copyright {
     margin-top: -0.75rem;
@@ -208,7 +233,7 @@ body {
     float: left;
   }
   .Footer .wrapper .left .name {
-    font-size: 1.0rem;
+    font-size: .50rem;
     line-height: 0.75rem;
   }
   @media (min-width: 992px) {
@@ -227,9 +252,9 @@ body {
     .Footer .wrapper .right .domain {
       font-size: 1.1rem;
     }
-  }
+  } 
   .stripe {
-    background-image: url('./stripe.png');
+    background-image: url('./images/stripe.png');
     background-position: center;
   background-repeat: no-repeat;
   background-size: contain;

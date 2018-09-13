@@ -3,5 +3,5 @@ from backend import settings
 
 def index(request):
 
-    context = { "stripe_key": settings.STRIPE_PUBLIC_KEY }
+    context = { "stripe_key": settings.STRIPE_TEST_PUBLIC_KEY }
     return render(request, "index.html", context)

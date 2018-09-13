@@ -35,7 +35,7 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', cast=bool, default=False)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(',')
-#ALLOWED_HOSTS = [backend.herokuapp.com, '127.0.0.1:8000']
+# ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -85,8 +85,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+ROOT_URLCONF ="backend.urls"
 
-ROOT_URLCONF = 'backend.urls'
 
 TEMPLATES = [
     {
@@ -164,7 +164,7 @@ USE_TZ = True
 
 
 CORS_ORIGIN_WHITELIST = (
-    config('CORS')
+   config('CORS')
 )
 
 # CORS_ALLOW_CREDENTIALS = True
@@ -195,6 +195,21 @@ REST_FRAMEWORK = {
         'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
     ),
 }
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ]
+}
+# REST_FRAMEWORK = {
+    # 'DEFAULT_PERMISSION_CLASSES': (
+    #     'rest_framework.permissions.IsAuthenticated',
+    # ),
+    # 'DEFAULT_AUTHENTICATION_CLASSES': (
+    #     # 'rest_framework_simplejwt.authentication.JWTAuthentication',
+    #     'rest_framework.authentication.SessionAuthentication',
+    # ),
+# }
+
 
 # Enables django-rest-auth to use JWT tokens instead of regular tokens.
 REST_USE_JWT = True
@@ -211,7 +226,7 @@ CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
-            "hosts": [('127.0.0.1', 6379)],
+            "hosts": [os.environ.get('REDIS_URL', 'redis://localhost:6379')],
         },
     },
 }
