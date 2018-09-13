@@ -4,7 +4,7 @@ set -eo pipefail
 
 # navigate into the client folder to run webpack
 CLIENT_FOLDER=$(find . -maxdepth 3 -type d -name 'client')
-pushd $CLIENT_FOLDER
+pushd $CLIENT_FOLDER/
 
 if ! [ -d "node_modules" ]; then
   # run npm install to install dependencies
