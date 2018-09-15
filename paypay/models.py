@@ -1,12 +1,12 @@
 from django.db import models
-import stripe
+# import stripe
 from django.utils import timezone
 class Space_Race(models.Model):
     subscription    = models.CharField(max_length=234)
     quantity        = models.CharField(max_length=4)
     charge_id       = models.CharField(max_length=234)
 
-stripe.api_key = 'sk_test_HP05OJENWcUnfccM9cXT1yLS' # settings.STRIPE_SECRET_KEY
+# stripe.api_key = 'sk_test_HP05OJENWcUnfccM9cXT1yLS' # settings.STRIPE_SECRET_KEY
 
 def checkout(request):
 

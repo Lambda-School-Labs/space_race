@@ -123,13 +123,13 @@ class StudentJoinCard extends Component {
     }
 }
 
-// const mapStateToProps = state => {
-//     return {
-//         race: state.AdminDelivery.race,
-//         gotRace: state.AdminDelivery.gotRace,
-//         index: state.AdminDelivery.index
-//     }
-// }
+const mapStateToProps = state => {
+    return {
+        race: state.AdminDelivery.race,
+        gotRace: state.AdminDelivery.gotRace,
+        index: state.AdminDelivery.index
+    }
+}
 
 StudentJoinCard.propTypes = {
     classes: PropTypes.object.isRequired,

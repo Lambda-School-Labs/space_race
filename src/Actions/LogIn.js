@@ -9,12 +9,12 @@ export const SIGNEDOUT = 'SIGNEDOUT';
 export const PASSWORDCHANGED = 'PASSWORDCHANGED';
 
 // TODO: change urls for deployment
-// const url = 'http://127.0.0.1:8000/api/v1/rest-auth/login/'
-const url = 'spaceracetrivia.herokuapp.com/api/v1/rest-auth/login/'
-// const signUpUrl = 'http://127.0.0.1:8000/api/v1/rest-auth/registration/';
-const signUpUrl = 'spaceracetrivia.herokuapp.com/api/v1/rest-auth/registration/';
-// const changePassUrl = 'http://127.0.0.1:8000/api/v1/rest-auth/password/change/'
-const changePassUrl = 'spaceracetrivia.herokuapp.com/api/v1/rest-auth/password/change/'
+const url = 'http://127.0.0.1:8000/api/v1/rest-auth/login/'
+// const url = 'spaceracetrivia.herokuapp.com/api/v1/rest-auth/login/'
+const signUpUrl = 'http://127.0.0.1:8000/api/v1/rest-auth/registration/';
+// const signUpUrl = 'spaceracetrivia.herokuapp.com/api/v1/rest-auth/registration/';
+const changePassUrl = 'http://127.0.0.1:8000/api/v1/rest-auth/password/change/'
+// const changePassUrl = 'spaceracetrivia.herokuapp.com/api/v1/rest-auth/password/change/'
 
 const redirectURL = '/'
 

@@ -7,8 +7,8 @@ export const ERROR = 'ERROR';
 
 
 // TODO: Change URL for deployment
-const url = 'spaceracetrivia.herokuapp.com/db/students';
-// const url = 'http://127.0.0.1:8000/db/students';
+// const url = 'spaceracetrivia.herokuapp.com/db/students';
+const url = 'http://127.0.0.1:8000/db/students';
 
 export const createStudent = (data, slug, history) => {
   return dispatch => {

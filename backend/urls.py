@@ -24,7 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/', include('api.urls')),
     path('.*', TemplateView.as_view(template_name='index.html')),
-    path('', include('paypay.urls')),
+    # path('', include('paypay.urls')),
     path('db/', include('teams.urls')),
     # path('^', include('api.urls', namespace='api', app_name='api')),
 

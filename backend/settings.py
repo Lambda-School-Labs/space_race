@@ -15,7 +15,7 @@ import datetime
 from decouple import config
 import dj_database_url
 import django_heroku
-
+from corsheaders.defaults import default_methods
 """
 STRIPE_TEST_PUBLIC_KEY = os.environ.get("STRIPE_TEST_PUBLIC_KEY", "pk_test_TNLV3fu5CQAkF4bWXPJBou1V")
 STRIPE_TEST_SECRET_KEY = os.environ.get("STRIPE_TEST_SECRET_KEY", "sk_test_HP05OJENWcUnfccM9cXT1yLS")
@@ -59,8 +59,8 @@ INSTALLED_APPS = [
     'rest_auth.registration',
     'rest_framework.authtoken',
     'corsheaders',
-    'stripe',
-    'djstripe',
+    # 'stripe',
+    # 'djstripe',
     # Our apps
     'api',
     'teams',
@@ -166,7 +166,9 @@ USE_TZ = True
 CORS_ORIGIN_WHITELIST = (
    config('CORS')
 )
-
+CORS_ALLOW_HEADERS = (
+    'authorization'
+)
 # CORS_ALLOW_CREDENTIALS = True
 if not DEBUG:
     django_heroku.settings(locals())

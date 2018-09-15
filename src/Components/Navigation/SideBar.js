@@ -19,21 +19,21 @@ import { signOut } from '../../Actions/LogIn'
 // import CreateRace from '../CreateRacePage/index';
 
 
-// const routes = [
-//     {
-//         path: "/settings",
-//         // exact: true,
-//         main: () => <Settings />
-//     },
-//     {
-//         path: "/scoreboard",
-//         main: () => <Scoreboard />
-//     },
-//     {
-//         path: "/createrace",
-//         main: () => <CreateRace />
-//     }
-// ]
+const routes = [
+    {
+        path: "/settings",
+        // exact: true,
+        main: () => <Settings />
+    },
+    {
+        path: "/scoreboard",
+        main: () => <Scoreboard />
+    },
+    {
+        path: "/createrace",
+        main: () => <CreateRace />
+    }
+]
 
 // updated side bar, may be used instead of side menu
 // not sure if all pages are included but can be fixed
@@ -43,17 +43,17 @@ class SideBar extends Component {
     render() {
         return (
             <div className="Dashboard">
-                {/* <Row className="row"> */}
-                    <div style={{padding: 0}}>
+                 <Row className="row"> 
+                   <div style={{padding: 0}}>
                         <Nav vertical className="Menu">
                             <NavItem style={{ listStyleType: "none" }}>
                                 
                                 <IoAndroidContact size={45}/> Welcome {localStorage.getItem('User')}
                                 <hr />
-                            </NavItem >
+                            </NavItem>
                             <NavItem style={{ listStyleType: "none" }}>
                                 <Link to="/createrace"><IoAndroidAddCircle size={30}/> Race</Link>
-                            </NavItem >
+                            </NavItem>
                             {/* <NavItem style={{ listStyleType: "none" }}>
                                 <Link to="/showrace">SHOW</Link>
                             </NavItem> */}
@@ -67,13 +67,13 @@ class SideBar extends Component {
                                 <Link to="/" onClick={() => this.props.signOut()} ><IoLogOut size={30} /> Log Out</Link>
                             </NavItem> 
                         </Nav>
-                    </div>
-                    {/* <div style={{width: "100%"}}>
-                        {routes.map((route, index) => (
-                            <Route key={index} path={route.path} exact={route.exact} component={route.main} />
-                        ))}
-                    </div> */}
-                {/* </Row> */}
+                        </div>
+              {/*      <div style={{width: "100%"}}>
+                    {routes.map((route, index) => (
+                        <Route key={index} path={route.path} exact={route.exact} component={route.main} />
+                    ))}
+                </div> */}
+                </Row> 
             </div>
         );
 

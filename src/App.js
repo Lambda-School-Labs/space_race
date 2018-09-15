@@ -39,25 +39,25 @@ const routes = [
       sidebar: () => <SideBar />,
       main: () => <CreateRaceCard />
   },
-  // {
-  //   path: "/scoreboard",
-  //   sidebar: () => <SideBar />,
-  //   main: () => <ShowRaceCard />
-  // }
+  {
+    path: "/scoreboard",
+    sidebar: () => <SideBar />,
+    main: () => <ShowRaceCard />
+  }
 ]
 
-// const StudentRoutes = [
-//   {
-//     path: "/joinrace/:slug",
-//     navbar: () => <NavBar />,
-//     main: () => <StudentJoinRacePage />
-//   },
-//   {
-//     path: "/race/:slug",
-//     navbar: () => <NavBar />,
-//     main: () => <ScoreBoard />
-//   }
-// ]
+const StudentRoutes = [
+  {
+    path: "/joinrace/:slug",
+    navbar: () => <NavBar />,
+    main: () => <StudentJoinRacePage />
+  },
+  {
+    path: "/race/:slug",
+    navbar: () => <NavBar />,
+    main: () => <ScoreBoard />
+  }
+]
 //NOTE:  Authenticated routes are commented out for the time being until the backend gets hooked up.
 
 

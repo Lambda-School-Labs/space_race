@@ -8,7 +8,7 @@ import json
 
 import stripe
 
-stripe.api_key = settings.STRIPE_SECRET_KEY
+stripe.api_key = "sk_test_HP05OJENWcUnfccM9cXT1yLS"
 stripe.log = 'info'  # or 'debug'
 
 # How it works - in 3 steps:

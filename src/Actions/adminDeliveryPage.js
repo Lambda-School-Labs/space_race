@@ -12,9 +12,9 @@ export const ERROR = 'ERROR';
 const webSocketBridge = new WebSocketBridge();
 
 // TODO: Change url for deployment
-const url = 'ws://spaceracetrivia.herokuapp.com/ws/quiz';
-// const httpReq = 'http://127.0.0.1:8000'
-const httpReq='spaceracetrivia.herokuapp.com'
+const url = 'ws://http://127.0.0.1:8000/ws/quiz';
+const httpReq = 'http://127.0.0.1:8000'
+// const httpReq='spaceracetrivia.herokuapp.com'
 export const gettingRace = (slug) => {
   return dispatch => {
     dispatch({type: GETTINGRACE})
