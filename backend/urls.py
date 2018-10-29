@@ -15,18 +15,21 @@ Including another URLconf
 """
 
 from django.contrib import admin
+from . import views
 
 from django.views.generic import TemplateView
-from django.urls import include, path
+from django.urls import include, path, re_path 
+
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/', include('api.urls')),
-    path('.*', TemplateView.as_view(template_name='index.html')),
-    path('', include('paypay.urls')),
+    # path(r'.*', TemplateView.as_view(), template_name='index.html'),
+    # path('', include('paypay.urls')),
     path('db/', include('teams.urls')),
-    # path('^', include('api.urls', namespace='api', app_name='api')),
+    path('', include('api.urls')),
+    re_path(r'^', views.FrontendAppView.as_view()),
 
    # path('payment/', include('payment.urls')),
    # path('payment/', include('djstripe.urls')),

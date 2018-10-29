@@ -28,7 +28,8 @@ class QuizAndTeamsForm extends Component {
       teams: [],
       randomize_team: false,
       colorToggle: false,
-      updateToggle: false
+      updateToggle: false,
+      mascotArray : ["🐶", "🐈", "🐍", "🐋",  "🐊", "🐘", "🦒", "🦆", "🐇"]
     }
   }
   componentDidMount() {
@@ -40,7 +41,38 @@ class QuizAndTeamsForm extends Component {
       })
     }
   }
-
+  
+  removeSelected = (value) => {
+    const newArr =  this.state.mascotArray.filter(e => e.value !== value)
+    this.setState({
+     mascotArray: newArr
+    })
+}
+handleSelect = (value) => {
+    return this.removeSelected(value)
+}
+ MascotList = ({mascotArray}) => {
+  
+  
+   return (
+     <div>
+       <Input sm="3" name="mascot"  onChange={this.changeHandler} value={this.state.mascot} type="select">
+          <option>Pick Mascot</option>
+            { 
+              this.state.mascotArray.map(mascot => {
+                return (
+                    <option key={mascot} value={mascot} onSelect={this.handleSelect}>{mascot}</option>
+                  )
+               })
+            }    
+        </Input>
+    </div>
+   )
+ }
+  checkMascot = (value) => {
+    const { mascot } = this.state;
+    return value === mascot ? true : false;
+  }
   colorToggle = event => {
     this.setState({
       colorToggle: !this.state.colorToggle
@@ -107,6 +139,7 @@ class QuizAndTeamsForm extends Component {
   }
 
   render() {
+   
     return (
       <div>
         <Form>
@@ -124,20 +157,7 @@ class QuizAndTeamsForm extends Component {
               <Input  sm="4" type="text" name="teamName" placeholder="Team Name" value={this.state.teamName} onChange={this.changeHandler}/>
             </Col>
             <Col sm={3}>
-              <Input sm="3" name="mascot" onChange={this.changeHandler} value={this.state.mascot} type="select">
-                <option>Pick Mascot</option>
-                <option value="🐝">🐝</option>
-                <option value="🐶">🐶</option>
-                <option value="🐈">🐈</option>
-                <option value="🐎">🐎</option>
-                <option value="🐍">🐍</option>
-                <option value="🐋">🐋</option>
-                <option value="🐊">🐊</option>
-                <option value="🐘">🐘</option>
-                <option value="🦒">🦒</option>
-                <option value="🦆">🦆</option>
-                <option value="🐇">🐇</option>
-              </Input>
+              {this.MascotList(this.state.mascotArray)}
             </Col>
             <Col sm={3}>
               <Input onClick={this.colorToggle} placeholder="Pick a Color" value={this.state.color}/>

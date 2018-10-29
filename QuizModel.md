@@ -56,3 +56,10 @@ Assuming you do not have any merge conflicts and have the latest pull request
 ## `PUT` and `DELETE`
   * Go to `http://127.0.0.1:8000/api/:id` if it is your first quiz the `id` will be 1. So simply go to `http://127.0.0.1:8000/api/1/`
   * Once again scroll to the bottom to the `Raw Data` section and alter any fields of your choosing and press `PUT`. The page should reload with the updated information.
+
+
+##  INSTRUCTIONS FOR WINDOWS 
+
+A couple of extra files are needed in order to fulfill all the dependincies required for Django to work.  
+Install pypiwin32 and Twisted.Twisted = {path = ".\\Twisted-18.7.0-cp36-cp36m-win_amd64.whl"}
+"pypiwin32" = "*"

@@ -29,35 +29,35 @@ const routes = [
       sidebar: () => <SideBar />,
       main: () => <Settings />
   },
-  {
-      path: "/scoreboard/:slug",
-      sidebar: () => <SideBar />,
-      main: () => <AdminDelivery />
-  },
+  // {
+  //     path: "/scoreboard/:slug",
+  //     sidebar: () => <SideBar />,
+  //     main: () => <AdminDelivery />
+  // },
   {
       path: "/createrace",
       sidebar: () => <SideBar />,
       main: () => <CreateRaceCard />
   },
-  // {
-  //   path: "/scoreboard",
-  //   sidebar: () => <SideBar />,
-  //   main: () => <ShowRaceCard />
-  // }
+  {
+    path: "/scoreboard",
+    sidebar: () => <SideBar />,
+    main: () => <ShowRaceCard />
+  }
 ]
 
-// const StudentRoutes = [
-//   {
-//     path: "/joinrace/:slug",
-//     navbar: () => <NavBar />,
-//     main: () => <StudentJoinRacePage />
-//   },
-//   {
-//     path: "/race/:slug",
-//     navbar: () => <NavBar />,
-//     main: () => <ScoreBoard />
-//   }
-// ]
+const StudentRoutes = [
+  {
+    path: "/joinrace/:slug",
+    navbar: () => <NavBar />,
+    main: () => <StudentJoinRacePage />
+  },
+  {
+    path: "/race/:slug",
+    navbar: () => <NavBar />,
+    main: () => <ScoreBoard />
+  }
+]
 //NOTE:  Authenticated routes are commented out for the time being until the backend gets hooked up.
 
 
@@ -82,17 +82,17 @@ class App extends Component {
     );
     return (                    
       <div className="App">                     
-        <Route path="/" exact component={LandingPage} />
+     <Route path="/" exact component={LandingPage} />
         <Route path="/signin" component={SignIn} />
         <Route path="/signup" component={SignUp} />
-        {/* <Route path="/admindelivery/:slug" component={AdminDelivery} /> */}
-        {/* <Route path="/adminrace" component={AdminRace} /> */}
-        {/* <Route path="/api" component={App} /> */}
-        {/* <Route path="/createrace" component={CreateRaceCard} /> */}
+         <Route path="/admindelivery/:slug" component={AdminDelivery} /> 
+            {/*<Route path="/adminrace" component={AdminRace} /> 
+        <Route path="/api" component={App} />
+          <Route path="/createrace" component={CreateRaceCard} /> 
         <Route path="/race/:slug" component={ScoreBoard} />
         <Route path="/joinrace/:slug" component={StudentJoinRacePage} />
-        {/* <Route path="/showrace" component={ShowRaceCard} /> */}
-        {/* <Route path="/settings" component={Settings} /> */}
+         <Route path="/showrace" component={ShowRaceCard} /> 
+    <Route path="/settings" component={Settings} /> */}
         {routes.map((route, index) => (
           <PrivateRoute key={index} path={route.path} exact={route.exact} component={route.sidebar} />
         ))}
@@ -130,15 +130,14 @@ class App extends Component {
           ) : <Route to='/scoreboard' />  
         )} />
         
-        {/* {StudentRoutes.map((route, index) => (
+         {StudentRoutes.map((route, index) => (
           <Route key={index} path={route.path} exact={route.exact} component={route.navbar} />
         ))}
 
         {StudentRoutes.map((route, index) => (
           <Route key={index} path={route.path} exact={route.exact} component={route.main} />
-        ))} */}
-
-        {/* <Route path="/student" component={StudentJoinRace} /> */}
+        ))} 
+          <Route path="/student" component={StudentJoinRace} />
 
 
    {/* ---- when we have the authentication and login hooked up to the back the below routes can be uncommented and the above routes can be deleted ---- */}

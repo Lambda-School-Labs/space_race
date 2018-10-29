@@ -5,5 +5,6 @@ urlpatterns = [
     path('rest-auth/registration/', include('rest_auth.registration.urls')),
     path('accounts/', include('accounts.urls')),
     path('paypay/', include('paypay.urls')),
+    path('teams', include('teams.urls')),
     # path('rest-auth/', drf_views.obtain_auth_token( name='auth'))
 ]
