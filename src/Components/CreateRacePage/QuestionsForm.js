@@ -35,7 +35,6 @@ class QuizAndTeamsForm extends Component {
     this.setState({
       [event.target.name]: event.target.value
     })
-    console.log(this.state)
   }
 
   handleChange = name => event => {
@@ -48,7 +47,6 @@ class QuizAndTeamsForm extends Component {
     })
   }
   nextHandler = (event) => {
-    console.log(this.state);
     if (this.state.question && this.state.answers.length > 0) {
       let question = {
         question: this.state.question,
@@ -121,14 +119,13 @@ class QuizAndTeamsForm extends Component {
         <Form>
           <FormGroup>
             <Label>Question</Label>
-            <Row>
             <Col>
             <Input type="text" name="question" placeholder="Question" value={this.state.question} onChange={this.changeHandler}/>
             </Col>
-            </Row>
           </FormGroup>
-            <Label> Add an Answer </Label>
-          <FormGroup row>
+          <FormGroup >
+            <Label>Add an Answer </Label>
+            <div style={{display: "inline-flex", width: "100%"}}>
             <Col>
             <Input type="text" name="answer" placeholder="Answer" value={this.state.answer} onChange={this.changeHandler}/>
             </Col>
@@ -143,38 +140,42 @@ class QuizAndTeamsForm extends Component {
             <Col >
               <Button onClick={this.AnswerHandler} variant="contained" color="primary">Add Answer</Button>
             </Col>
+            </div>
           </FormGroup>
+          <Col>
           {this.state.answers.map((answer, index) => {
             return <div key={index}>{answer.answer}</div>
           })}
-        <FormGroup row>
-          <Row>
-          <Col >
+          </Col>
+        <FormGroup >
+          {/* <Col > */}
           <Switch
           checked={this.state.shuffle_answers}
           onChange={this.handleChange('shuffle_answers')}
           value="shuffle_answers"
           color="primary"
+          // style={{float: "left"}}
           /> {' '} Shuffle Answers
-          </Col>
-          </Row>
-          <Col>
-          <Button style={{float: "right"}} onClick={this.questionHandler} variant="contained" color="primary">Save</Button>
-          </Col>
+          {/* </Col> */}
+          {/* <Col> */}
+          {'      '}<Button onClick={this.questionHandler} variant="contained" color="primary">Save</Button>
+          {/* </Col> */}
         </FormGroup>
-        <ListGroup style={{ height: 150, overflow: "scroll"}}>
+        <ListGroup style={{ display: "inline-flex", height: 150, overflow: "scroll"}}>
           {this.props.questionsAdded ? this.props.questions.map((question, index) => {
             return <ListGroupItem key={index}>
             Question: {question.question} <span style={{ float: "right"}}><IoAndroidCreate size={23} color="#792d86" onClick={this.updateToggle}/> <UpdateQuestionModal handleAnswerDelete={this.handleAnswerDelete} updateToggle={this.state.updateToggle} updateToggleFunc={this.updateToggle} question={question} index={index} handleQuestionDelete={this.handleQuestionDelete} handleQuestionUpdate={this.handleQuestionUpdate} /> </span>
             <br/>
-            {question.answers.map(answer => {
+            {question.answers.map((answer, index) => {
               if(answer.is_correct === true) {
-                return <div>Answer: {answer.answer}</div>
+                return <div key={index}>Answer: {answer.answer}</div>
               }
             })} 
             </ListGroupItem>
           }): null}
         </ListGroup>
+        <br />
+        <br />
         <br />
         <FormGroup>
           <Button

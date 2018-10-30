@@ -13,18 +13,26 @@ import logger from "redux-logger";
 import rootReducer from "./Reducers/index";
 import ReduxPromise from "redux-promise";
 import App from "./App";
+import { PersistGate } from 'redux-persist/integration/react'
+import ConfigureStore from './configureStore';
 
-const store = createStore(
-  rootReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-  applyMiddleware(thunk, ReduxPromise, logger)
-);
+const { persistor, store} = ConfigureStore()
+
+
+
+// const store = createStore(
+//   rootReducer,
+//   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+//   applyMiddleware(thunk, ReduxPromise, logger)
+// );
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
-      <App />
+    <PersistGate loading={null} persistor={persistor} >
+      <BrowserRouter>
+        <App />
     </BrowserRouter>
+    </PersistGate>
   </Provider>,
   document.getElementById("root")
 );

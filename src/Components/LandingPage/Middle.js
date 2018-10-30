@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Button } from 'reactstrap';
-// import './middle.scss'
+import { Button } from '../../../../../../AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/reactstrap';
+import './middle.css'
 /****
  * 
  * So far this just has a background image with title and start button
@@ -15,7 +15,7 @@ class Middle extends Component {
     render() {
         return (
             <div>
-               {/*} <div className="hero-image"> 
+                <div className="hero-image"> 
                     <img  />                 
                         <div className="hero-text">
                             <Button style={{width: '155px', height: '40px', color: 'red', backgroundColor: '#5b7bc2'}}><h3><b>START</b></h3></Button>
@@ -23,10 +23,10 @@ class Middle extends Component {
                             <br/>
                         </div>
                         <div className="title">
-         
+                           
                             
                         </div>
-                </div>*/} 
+                </div>
             </div>
         );
     }

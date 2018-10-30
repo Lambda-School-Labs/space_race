@@ -92,7 +92,7 @@ class SignUp extends Component {
                     <FormFeedback valid>Passwords Match!</FormFeedback>
                     <FormFeedback>Passwords MUST Match</FormFeedback>
                 </FormGroup>
-                {/* <FormGroup tag="fieldset">
+             <FormGroup tag="fieldset">
                     <legend>Account Type</legend>
                     <FormGroup check>
                     <Label check>
@@ -114,7 +114,7 @@ class SignUp extends Component {
                          Student 
                 </Label>
                 </FormGroup>
-                </FormGroup> */}
+                </FormGroup> 
                     <Button disable={this.validateForm()} onClick={this.handleSubmit}>Sign Up </Button>
                     <h6> Already have an Account?</h6>
                     <Link to="/SignIn"> Sign In </Link>

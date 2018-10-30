@@ -4,22 +4,26 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-django = "*"
-djangorestframework = "*"
-django-cors-headers = "*"
-gunicorn = "*"
-"psycopg2-binary" = "*"
-dj-database-url = "*"
-python-decouple = "*"
-whitenoise = "*"
-django-heroku = "*"
+djangorestframework = "==3.8.2"
+django-cors-headers = "==2.2.0"
+gunicorn = "==19.8.1"
+"psycopg2-binary" = "==2.7.4"
+dj-database-url = "==0.5.0"
+python-decouple = "==3.1"
+whitenoise = "==3.3.1"
+django-heroku = "==0.3.1"
 django-rest-auth = "*"
 djangorestframework-jwt = "*"
 django-allauth = "*"
 channels = "*"
-channels-redis = "*"
 stripe = "*"
 dj-stripe = "*"
+"psycopg2" = "==2.7.4"
+pytz = "==2018.4"
+Django = "==2.0.5"
+channels_redis = "*"
+Twisted = {path = ".\\Twisted-18.7.0-cp36-cp36m-win_amd64.whl"}
+"pypiwin32" = "*"
 
 [dev-packages]
 

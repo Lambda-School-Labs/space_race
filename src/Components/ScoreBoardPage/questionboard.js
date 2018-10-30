@@ -40,9 +40,18 @@ class Questions extends Component {
     this.state = {
       value: '',
       submit: false,
-      question_id: -1
+      question_id: -1,
+      answers: []
     }
   }
+
+  componentWillMount() {
+      let questions = this.props.race.questions;
+      questions.map(question => {
+        this.state.answers.push(question.answers.sort(function() { return 0.5 - Math.random() }))
+      })
+  }
+
 
   answerHandler = event => {
     event.preventDefault();
@@ -68,19 +77,7 @@ class Questions extends Component {
 
   render() {
     const { classes } = this.props;
-    // const shuffleArray = (array) => {
-    //   let currentIndex = array.length, temporaryValue, randomIndex;
-    //     while (0 !== currentIndex) {
-    //       randomIndex = Math.floor(Math.random() * currentIndex);
-    //       currentIndex -= 1;
-      
-    //       temporaryValue = array[currentIndex];
-    //       array[currentIndex] = array[randomIndex];
-    //       array[randomIndex] = temporaryValue;
-    //     } 
-    //   return array;
-    // }
-    const answers = this.props.race.questions[this.props.index].answers; 
+    let answers = this.props.race.questions[this.props.index].answers;
     return (
       <Paper className={classes.root} elevation={4}>
           {!this.props.gotRace ? null :
@@ -90,7 +87,7 @@ class Questions extends Component {
               </Typography>
               <br/> */}
               {/* <Typography variant="title" gutterBottom> */}
-              <FormLabel component="legend">Question: {this.props.race.questions[this.props.index].question}</FormLabel>
+              <FormLabel component="legend" focused={true}>Question: {this.props.race.questions[this.props.index].question}</FormLabel>
               {/* </Typography> */}
               {/* <br/> */}
               {/* <Typography variant="subheading" gutterBottom> */}
@@ -102,7 +99,9 @@ class Questions extends Component {
                   value={this.state.value}
                   onChange={this.handleChange}
                 >
-                  {answers.map(answer => {
+                  {this.props.race.questions[this.props.index].shuffle_answers ? this.state.answers[this.props.index].map(answer => {
+                    return <FormControlLabel key={answer.id}  value={answer.id.toString()} label={answer.answer} control={<Radio color="primary" />}  disabled={this.state.submit && this.state.question_id == this.props.race.questions[this.props.index].id && this.state.value != answer.id ? true : false}/>
+                  }) : answers.map(answer => {
                     return <FormControlLabel key={answer.id}  value={answer.id.toString()} label={answer.answer} control={<Radio color="primary" />}  disabled={this.state.submit && this.state.question_id == this.props.race.questions[this.props.index].id && this.state.value != answer.id ? true : false}/>
                   })}
                 {/* </ul> */}
