@@ -5,7 +5,7 @@
   "dependencies": {
     "@material-ui/core": "^1.2.0",
     "ajv": "^6.5.0",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "bootstrap": "^4.1.1",
     "django-channels": "^1.1.6",
     "final-form": "^4.7.3",
